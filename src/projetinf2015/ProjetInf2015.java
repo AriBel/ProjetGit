@@ -225,7 +225,7 @@ public class ProjetInf2015 {
         dcmlFS.setDecimalSeparator('.');
         df.setDecimalFormatSymbols(dcmlFS);
 
-        if (validerNumeroClient(objet) && validerContrat(objet)) {
+        if (validerNumeroClient(objet.getString("client")) && validerContrat(objet)) {
 
             JSONObject outputObj = new JSONObject();
             JSONObject newObj = new JSONObject();
