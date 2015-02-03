@@ -1,3 +1,4 @@
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -23,27 +24,18 @@ public class ProjetInf2015 {
      * @param json
      * @return
      */
-    public static boolean validerNumeroClient(JSONObject json) {
+   public static boolean validerNumeroClient(String numero) {
         boolean reponse = false;
-        if (json.getString("client").length() == 6) {
-            if (Integer.parseInt(json.getString("client").substring(0, 1)) >= 0 && Integer.parseInt(json.getString("client").substring(0, 1)) < 10) {
-                if (Integer.parseInt(json.getString("client").substring(1, 2)) >= 0 && Integer.parseInt(json.getString("client").substring(1, 2)) < 10) {
-                    if (Integer.parseInt(json.getString("client").substring(2, 3)) >= 0 && Integer.parseInt(json.getString("client").substring(2, 3)) < 10) {
-                        if (Integer.parseInt(json.getString("client").substring(3, 4)) >= 0 && Integer.parseInt(json.getString("client").substring(3, 4)) < 10) {
-                            if (Integer.parseInt(json.getString("client").substring(4, 5)) >= 0 && Integer.parseInt(json.getString("client").substring(4, 5)) < 10) {
-                                if (Integer.parseInt(json.getString("client").substring(5, 6)) >= 0 && Integer.parseInt(json.getString("client").substring(5, 6)) < 10) {
-                                    reponse = true;
-                                }
-                            }
-                        }
-
-                    }
+        if (numero.length() == 6) {
+            for (int i = 0; i < numero.length(); i++) {
+                if (numero.charAt(i) >= '0' && numero.charAt(i) <= '9') {
+                    reponse = true;
                 }
             }
         }
         return reponse;
     }
-
+   
     public static boolean validerContrat(JSONObject json) {
         boolean reponse = false;
         if (json.getString("contrat").equals("B") || json.getString("contrat").equals("A") || json.getString("contrat").equals("C") || json.getString("contrat").equals("D")) {
@@ -67,9 +59,7 @@ public class ProjetInf2015 {
         }
         return reponse;
     }
-
     
-
     public static double formaterMontant(String montant) {
         String montantFormate = "";
         for (int i = 0; i < montant.length(); i++) {
@@ -278,9 +268,9 @@ public class ProjetInf2015 {
             System.out.println(errorOutput);
             ecrire(args[1], errorOutput);
         }
+        
+      
 
-        boolean x = validerMois(objet, array);
-        System.out.println(x);
 
     }
 }
